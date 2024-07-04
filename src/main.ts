@@ -67,16 +67,9 @@ function equals(firstValue: any, secondValue: any) {
     const keys1 = Object.keys(firstValue);
     const keys2 = Object.keys(secondValue);
   
-    if (keys1.length !== keys2.length) {
-      return false;
-    }
-  
-    for (let key of keys1) {
-      if (firstValue[key] !== secondValue[key]) {
-        return false;
-      }
-    }
-    return true;
+    return keys1.length === keys2.length && keys1.every(key => {
+      return firstValue[key] === secondValue[key]
+    })
   }
 
   // otherwise just compare the values directly
